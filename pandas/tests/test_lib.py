@@ -13,15 +13,15 @@ class TestMisc(tm.TestCase):
     def test_max_len_string_array(self):
 
         arr = a = np.array(['foo', 'b', np.nan], dtype='object')
-        self.assertTrue(lib.max_len_string_array(arr), 3)
+        self.assertEqual(lib.max_len_string_array(arr), 3)
 
         # unicode
         arr = a.astype('U').astype(object)
-        self.assertTrue(lib.max_len_string_array(arr), 3)
+        self.assertEqual(lib.max_len_string_array(arr), 3)
 
         # bytes for python3
         arr = a.astype('S').astype(object)
-        self.assertTrue(lib.max_len_string_array(arr), 3)
+        self.assertEqual(lib.max_len_string_array(arr), 3)
 
         # raises
         pytest.raises(TypeError,
