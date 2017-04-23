@@ -2101,12 +2101,12 @@ class TestStringMethods(tm.TestCase):
         idx = Index(['a,b', 'c,d'], name='xxx')
         res = idx.str.split(',')
         exp = Index([['a', 'b'], ['c', 'd']], name='xxx')
-        self.assertTrue(res.nlevels, 1)
+        self.assertEqual(res.nlevels, 1)
         tm.assert_index_equal(res, exp)
 
         res = idx.str.split(',', expand=True)
         exp = MultiIndex.from_tuples([('a', 'b'), ('c', 'd')])
-        self.assertTrue(res.nlevels, 2)
+        self.assertEqual(res.nlevels, 2)
         tm.assert_index_equal(res, exp)
 
     def test_partition_series(self):
@@ -2246,13 +2246,13 @@ class TestStringMethods(tm.TestCase):
         idx = Index(['a,b', 'c,d'], name='xxx')
         res = idx.str.partition(',')
         exp = MultiIndex.from_tuples([('a', ',', 'b'), ('c', ',', 'd')])
-        self.assertTrue(res.nlevels, 3)
+        self.assertEqual(res.nlevels, 3)
         tm.assert_index_equal(res, exp)
 
         # should preserve name
         res = idx.str.partition(',', expand=False)
         exp = Index(np.array([('a', ',', 'b'), ('c', ',', 'd')]), name='xxx')
-        self.assertTrue(res.nlevels, 1)
+        self.assertEqual(res.nlevels, 1)
         tm.assert_index_equal(res, exp)
 
     def test_pipe_failures(self):

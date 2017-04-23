@@ -2956,7 +2956,7 @@ class TestDataFrameIndexingDatetimeWithTZ(tm.TestCase, TestData):
         # set/reset
         df = DataFrame({'A': [0, 1, 2]}, index=idx)
         result = df.reset_index()
-        self.assertTrue(result['foo'].dtype, 'M8[ns, US/Eastern')
+        self.assertEqual(result['foo'].dtype, 'M8[ns, US/Eastern')
 
         df = result.set_index('foo')
         tm.assert_index_equal(df.index, idx)

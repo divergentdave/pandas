@@ -1902,7 +1902,7 @@ class TestDataFrameConstructorWithDatetimeTZ(tm.TestCase, TestData):
 
         # construction
         df = DataFrame({'A': idx, 'B': dr})
-        self.assertTrue(df['A'].dtype, 'M8[ns, US/Eastern')
+        self.assertEqual(df['A'].dtype, 'M8[ns, US/Eastern')
         self.assertTrue(df['A'].name == 'A')
         tm.assert_series_equal(df['A'], Series(idx, name='A'))
         tm.assert_series_equal(df['B'], Series(dr, name='B'))

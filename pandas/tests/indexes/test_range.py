@@ -173,16 +173,16 @@ class TestRangeIndex(Numeric, tm.TestCase):
         copy = RangeIndex(orig)
         copy.name = 'copy'
 
-        self.assertTrue(orig.name, 'original')
-        self.assertTrue(copy.name, 'copy')
+        self.assertEqual(orig.name, 'original')
+        self.assertEqual(copy.name, 'copy')
 
         new = Index(copy)
-        self.assertTrue(new.name, 'copy')
+        self.assertEqual(new.name, 'copy')
 
         new.name = 'new'
-        self.assertTrue(orig.name, 'original')
-        self.assertTrue(new.name, 'copy')
-        self.assertTrue(new.name, 'new')
+        self.assertEqual(orig.name, 'original')
+        self.assertEqual(new.name, 'copy')
+        self.assertEqual(new.name, 'new')
 
     def test_numeric_compat2(self):
         # validate that we are handling the RangeIndex overrides to numeric ops
@@ -274,7 +274,7 @@ class TestRangeIndex(Numeric, tm.TestCase):
             expected = "RangeIndex(start=0, stop=5, step=1, name='Foo')"
         else:
             expected = "RangeIndex(start=0, stop=5, step=1, name=u'Foo')"
-        self.assertTrue(result, expected)
+        self.assertEqual(result, expected)
 
         result = eval(result)
         tm.assert_index_equal(result, i, exact=True)

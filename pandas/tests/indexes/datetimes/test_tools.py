@@ -626,7 +626,7 @@ class ToDatetimeMisc(tm.TestCase):
     def test_to_datetime_default(self):
         rs = to_datetime('2001')
         xp = datetime(2001, 1, 1)
-        self.assertTrue(rs, xp)
+        self.assertEqual(rs, xp)
 
         # dayfirst is essentially broken
 

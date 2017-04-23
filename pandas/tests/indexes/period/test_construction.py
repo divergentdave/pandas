@@ -135,15 +135,15 @@ class TestPeriodIndex(tm.TestCase):
 
         result = PeriodIndex(idx, freq=offsets.MonthEnd())
         tm.assert_index_equal(result, idx)
-        self.assertTrue(result.freq, 'M')
+        self.assertEqual(result.freq, 'M')
 
         result = PeriodIndex(idx, freq='2M')
         tm.assert_index_equal(result, idx.asfreq('2M'))
-        self.assertTrue(result.freq, '2M')
+        self.assertEqual(result.freq, '2M')
 
         result = PeriodIndex(idx, freq=offsets.MonthEnd(2))
         tm.assert_index_equal(result, idx.asfreq('2M'))
-        self.assertTrue(result.freq, '2M')
+        self.assertEqual(result.freq, '2M')
 
         result = PeriodIndex(idx, freq='D')
         exp = idx.asfreq('D', 'e')

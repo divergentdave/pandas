@@ -154,7 +154,7 @@ class TestNth(MixIn, tm.TestCase):
         expected = s.groupby(g).first()
         expected2 = s.groupby(g).apply(lambda x: x.iloc[0])
         assert_series_equal(expected2, expected, check_names=False)
-        self.assertTrue(expected.name, 0)
+        self.assertEqual(expected2.name, 0)
         self.assertEqual(expected.name, 1)
 
         # validate first

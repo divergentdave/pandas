@@ -918,7 +918,7 @@ class TestTimeSeries(TestData, tm.TestCase):
         self.assertEqual(df['Forecasting'][0], dates[0][1])
 
         s = Series(arr['Date'])
-        self.assertTrue(s[0], Timestamp)
+        self.assertTrue(isinstance(s[0], Timestamp))
         self.assertEqual(s[0], dates[0][0])
 
         s = Series.from_array(arr['Date'], Index([0]))

@@ -4757,7 +4757,7 @@ class TestCaching(tm.TestCase):
     def run_X_index_creation(self, cls):
         inst1 = cls()
         if not inst1.isAnchored():
-            self.assertFalse(inst1._should_cache(), cls)
+            self.assertFalse(isinstance(inst1._should_cache(), cls))
             return
 
         self.assertTrue(inst1._should_cache(), cls)
